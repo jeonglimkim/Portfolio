@@ -53,11 +53,11 @@ ggplot(sample_2, aes(x = fttrump, y = ftobama)) +
 
 ```
 
-![](images/paste-4A9691A1.png)
+![](images/paste-0668ACBD.png)
 
-![](images/paste-C3BDB49F.png)
+![](images/paste-588B5BBA.png)
 
-![](images/paste-38DEEBE8.png)
+![](images/paste-DC1CDB7E.png)
 
 8.  Discuss the distributions from the previous question. Do they look mostly similar as is expected by sampling with replacement? Why or why not, do you think? Respond with a few sentences.
 
