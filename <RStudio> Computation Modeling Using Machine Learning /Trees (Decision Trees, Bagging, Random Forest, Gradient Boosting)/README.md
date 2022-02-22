@@ -1,54 +1,11 @@
----
-title: "Trees (Decision Trees, Bagging, Random Forest, Gradient Boosting)"
-author: "Jeong Lim Kim"
-output: 
-    word_document:
-        fig_width: 6
-        fig_height: 4
----
+## Trees (Decision Trees, Bagging, Random Forest, Gradient Boosting)
 
-```{r setup, include=FALSE}
-rm(list=ls())
-setwd("~/Documents/GitHub/Portfolio/<RStudio> Computation Modeling Using Machine Learning /Trees (Decision Trees, Bagging, Random Forest, Gradient Boosting)")
+### A Conceptual Problem
 
-knitr::opts_chunk$set(echo = TRUE, 
-                      #include = TRUE, 
-                      fig.width = 6, fig.height = 4,
-                      results='markup',
-                      warning = FALSE,
-                      cache = TRUE,
-                      digits = 3,
-                      width = 48)
-```
+1.  (15 points) Of the Gini index, classification error, and cross-entropy in simple classification settings with two classes, which would be best to use when *growing* a decision tree? Which would be best to use when *pruning* a decision tree? Why?
 
-```{r, results = 'hide'}
-library(tidyverse)
-library(tidymodels)
-library(randomForest)
-library(patchwork)
-library(rcfss)
-library(rpart)
-library(rpart.plot)
-library(xgboost)
-library(ranger)
-library(here)
-library(usemodels)
-library(baguette)
-```
-
-## Overview
-
-For each of the following prompts, produce responses _with_ code in-line. While you are encouraged to stage and draft your problem set solutions using any files, code, and data you'd like within the private repo for the assignment, *only the final, rendered PDF with responses and code in-line will be graded.*
-
-## A Conceptual Problem
-
-1. (15 points) Of the Gini index, classification error, and cross-entropy in simple classification settings with two classes, which would be best to use when *growing* a decision tree? Which would be best to use when *pruning* a decision tree? Why?
-- In the classification setting, RSS cannot be used as a criterion for making the binary splits. A natural alternative to RSS is the classification error rate. However, classification error rate is not sufficiently sensitive for tree-growing, as error rates are less sensitive to poor performing splits. Thus, Gini index and cross-entropy are two methods are better to use as it tend to grow more accurate trees. The classification error rate is preferable if prediction accuracy of the final pruned tree is the goal. 
-- Gini is intended for continuous attributes and Entropy is for attributes that occur in classes
--Gini is to minimize misclassification
--Entropy is for exploratory analysis
--Entropy is a little slower to compute
-
+-   In the classification setting, RSS cannot be used as a criterion for making the binary splits. A natural alternative to RSS is the classification error rate. However, classification error rate is not sufficiently sensitive for tree-growing, as error rates are less sensitive to poor performing splits. Thus, Gini index and cross-entropy are two methods are better to use as it tend to grow more accurate trees. The classification error rate is preferable if prediction accuracy of the final pruned tree is the goal.
+-   Gini is intended for continuous attributes and Entropy is for attributes that occur in classes -Gini is to minimize misclassification -Entropy is for exploratory analysis -Entropy is a little slower to compute.
 
 ## An Applied Problem
 
@@ -56,23 +13,23 @@ For the applied portion, your task is to predict attitudes towards racist colleg
 
 To address this problem, use the `gss_*.csv` data sets, which contain a selection of features from the 2012 GSS. The outcome of interest is `colrac`, which is a binary feature coded as either `ALLOWED` or `NOT ALLOWED`, where 1 means the racist professor *should* be allowed to teach, and 0 means the racist professor *should not* be allowed to teach. Full documentation can be found [here](https://gssdataexplorer.norc.org/variables/vfilter). I preprocessed the data for you to ease the model-fitting process:
 
-  * Missing values have been imputed
-  * Categorical features with low-frequency classes collapsed into an "other" category
-  * Nominal features with more than two classes have been converted to dummy features
-  * Remaining categorical features have been converted to integer values
+-   Missing values have been imputed
+-   Categorical features with low-frequency classes collapsed into an "other" category
+-   Nominal features with more than two classes have been converted to dummy features
+-   Remaining categorical features have been converted to integer values
 
 Your task is to construct a series of models to accurately predict an individual's attitude towards permitting professors who view Blacks to be racially inferior to teach in a college classroom. The learning objectives are:
 
-  * Implement a battery of tree-based learners
-  * Tune hyperparameters
-  * Substantively interpret models
+-   Implement a battery of tree-based learners
+-   Tune hyperparameters
+-   Substantively interpret models
 
-2. (35 points) Fit the following four tree-based models predicting `colrac` using the training set (`gss_train.csv`) with 10-fold CV. Remember to tune the relevant hyperparameters for each model as necessary. Only use the tuned model with the best performance for the remaining exercises. **Be sure to leave sufficient _time_ for hyperparameter tuning, as grid searches can be quite computationally taxing and take a while.**
+2.  (35 points) Fit the following four tree-based models predicting `colrac` using the training set (`gss_train.csv`) with 10-fold CV. Remember to tune the relevant hyperparameters for each model as necessary. Only use the tuned model with the best performance for the remaining exercises. **Be sure to leave sufficient *time* for hyperparameter tuning, as grid searches can be quite computationally taxing and take a while.**
 
-    * Decision tree (the rpart algorithm)
-    * Bagging
-    * Random forest
-    * Gradient boosting
+    -   Decision tree (the rpart algorithm)
+    -   Bagging
+    -   Random forest
+    -   Gradient boosting
 
 ```{r, results = 'hide'}
 gss_train <- read_csv("gss_train.csv") 
@@ -87,6 +44,7 @@ folds <- vfold_cv(data = gss_train, v = 10)
 rec <- recipe(colrac ~., data = gss_train)
 ```
 
+# Decision Tree
 
 ```{r, cache = TRUE}
 #Decision Tree
@@ -111,6 +69,8 @@ dt_tune_res <- tune_grid(
 )
 ```
 
+# Bagging
+
 ```{r, cache = TRUE}
 #Bagging
 set.seed(1234)
@@ -134,6 +94,8 @@ bg_tune_res <- tune_grid(
 )
 ```
 
+# Random Forest
+
 ```{r, cache = TRUE}
 #Random Forest
 set.seed(1234)
@@ -155,6 +117,8 @@ rf_tune_res <- tune_grid(
   grid = 30
 )
 ```
+
+# Gradient Boosting
 
 ```{r, cache = TRUE}
 #Gradient Boosting
@@ -194,11 +158,12 @@ xgb_tune <-
     )
 ```
 
+# Cross Validated Error Rate, ROC/AUC
 
-3. (20 points) Compare and present each model's (training) performance based on:
+3.  (20 points) Compare and present each model's (training) performance based on:
 
-    * Cross-validated error rate 
-    * ROC/AUC
+    -   Cross-validated error rate
+    -   ROC/AUC
 
 ```{r}
 
@@ -231,12 +196,15 @@ xgb_tune %>%
   show_best(metric = 'roc_auc')
 
 ```
-4. (15 points) Which is the best model? Defend your choice.
-- Although random forest model had a very close accuracy level to the gradient boostingmodel, the gradient boosting model is the best model out of four models. If one carefully tune parameters, gradient boosting can result in better performance than random forest.
 
+4.  (15 points) Which is the best model? Defend your choice.
 
-5. (15 points) Evaluate the performance of the best model selected in the previous question using the test set (`gss_test.csv`) by calculating and presenting the classification error rate and AUC of this model. Compared to the fit evaluated on the training set, does this "best" model generalize well? Why or why not? How do you know? 
-- Compared to the fit evaluated on the training set, the ‘best’ model did generalize well. We can see this by calculating the classification error rate and AUC of the model.
+-   Although random forest model had a very close accuracy level to the gradient boostingmodel, the gradient boosting model is the best model out of four models. If one carefully tune parameters, gradient boosting can result in better performance than random forest.
+
+5.  (15 points) Evaluate the performance of the best model selected in the previous question using the test set (`gss_test.csv`) by calculating and presenting the classification error rate and AUC of this model. Compared to the fit evaluated on the training set, does this "best" model generalize well? Why or why not? How do you know?
+
+-   Compared to the fit evaluated on the training set, the 'best' model did generalize well. We can see this by calculating the classification error rate and AUC of the model.
+
 ```{r, results = 'hide'}
 gss_test <- read_csv( "gss_test.csv")
 
