@@ -4,9 +4,6 @@ This folder is composed with assignments that I've accomplished in one of my cou
 
 -   Beginning Python, including logic control, loops, functions, classes, methods, and input-output
 
-```{=html}
-<!-- -->
-```
 -   Data exploration and visualization (using **Pandas**, **Matplotlib**)
 
 -   Data APIs and web scraping (using **BeautifulSoup**)
