@@ -35,4 +35,4 @@ The course is designed to enable students to:
 13. Deep learning, autoencoders
 14. Model-agnostic interpretation
 
-~The\ course\ syllabus\ can\ be\ found\ <https://pdwaggoner.github.io/Teaching/Waggoner_Modeling_W21.pdf>~
+The course syllabus can be found at <https://pdwaggoner.github.io/Teaching/Waggoner_Modeling_W21.pdf>
