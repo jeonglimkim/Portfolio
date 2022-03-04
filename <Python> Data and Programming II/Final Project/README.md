@@ -48,7 +48,7 @@ Our output map of the nuclear power plants shows that the majority of the plants
 
 *b) Plotting monthly net electricity generation by energy source with average temperature*
 
-![](stacked.html)
+![](images/Screen%20Shot%202022-03-05%20at%2012.14.02%20AM.png)
 
 Our graph displays trends and patterns of energy consumption from January 2001 to September 2020. We merged the national average temperature with net electricity generation to examine the relationship between the two components. One of the most noticeable patterns from the graph is that the average temperature and the net electricity generation works in the same direction. Moreover, in the early 2000s, coal has shown to be the primary energy source for electric power generation followed by nuclear. Since the 2010s, natural gas seems to rapidly overtake coal. In the late 2010s, natural gas overtook coal and became the leading source of electricity in the United States. It is also visible that an increase in renewable electricity generation takes place in this time frame, especially wind.
 
