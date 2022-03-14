@@ -1,6 +1,6 @@
 ## PPHA 30536: Data and Programming for Public Policy II
 
-TThis folder is composed with assignments that I've accomplished in one of my courses at the University of Chicago, Harris School of Public Policy. This course builds directly on the materials covered in PPHA 30535, Data and Programming for Public Policy I. It focuses on practical applications to research using Python:
+This folder is composed with assignments that I've accomplished in one of my courses at the University of Chicago, Harris School of Public Policy. This course builds directly on the materials covered in PPHA 30535, Data and Programming for Public Policy I. It focuses on practical applications to research using Python:
 
 -   Natural language processing
 
