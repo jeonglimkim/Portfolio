@@ -20,7 +20,9 @@ c) If we examine our plots above, there are some predictors that seems to have a
 association with per capita crime rate, but some are not obvious. For example, we can
 take a closer look at the relationships between 'CRIM' and 'AGE', 'DIS', 'TAX', and
 'PTRA TIO'.
+
 ![](images/paste-6DA35809.png)
+
 The plot shows positive relationships between 'CRIM' (per capital crime rate by town) and
 'AGE' (proportion of owner-occupied units built prior to 1940). Older a house gets, there
 seems to be more crime.There is a negative relationship between 'CRIM' and 'DIS' (weighted distances to five Boston employment centres). If a house is closer to work centers, crime decreases. However, the relationship between 'CRIM' and 'TAX' (full-value property-tax rate per
@@ -48,10 +50,7 @@ e) There are **36 suburbs** in the data set bound the Charles river.
 
 f) The median pupil-teacher ratio is **19.05.**
 
-g) Suburb index **398** has the lowest median value of owner-occupied homes of 5. Suburb index 398 had crime rate at 38.35, property tax rate at 666, and pupil-teacher ratio of
-20.2. Comparing these values to the histograms plotted above, the crime rate is greater
-than the majority; property tax rate is considered high; and pupil-teacher ratio falls under
-the peak.
+g) Suburb index **398** has the lowest median value of owner-occupied homes of 5. Suburb index 398 had crime rate at 38.35, property tax rate at 666, and pupil-teacher ratio of 20.2. Comparing these values to the histograms plotted above, the crime rate is greater than the majority; property tax rate is considered high; and pupil-teacher ratio falls under the peak.
 
 h)
 
