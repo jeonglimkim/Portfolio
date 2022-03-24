@@ -1,7 +1,3 @@
-
-from pickletools import markobject
-
-
 if __name__ == "__main__":
     n = int(input())
     cnt = 0 
