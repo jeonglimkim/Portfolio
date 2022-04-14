@@ -9,4 +9,4 @@ if __name__ == "__main__":
         score[i] = score[i] / m * 100
         temp += score[i]
         
-    print(temp)
+    print(temp/n)

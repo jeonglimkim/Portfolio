@@ -1,0 +1,25 @@
+
+if __name__ == "__main__":
+    n, m = map(int, input().split())
+    nums = list(map(int, input().split()))
+    
+    sum = nums[0]
+    cnt = 0
+    left = 0
+    right = 1
+    
+    while True:
+        if sum < m:
+            if right == n:
+                break
+            sum += nums[right]
+            right += 1
+        elif sum > m:
+            sum -= nums[left]
+            left += 1
+        else:
+            cnt += 1
+            sum -= nums[left]
+            left += 1
+            
+    print(cnt)
